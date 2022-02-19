@@ -1,0 +1,8 @@
+{
+  "name": "@ws/shared",
+  "description": "Shared all packages",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf lib && tsc"
+  }
+}

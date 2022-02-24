@@ -1,3 +1,3 @@
-# Base template
+# React clean architecture
 
-Base template monorepo with berry
+Simple react todo app with clean architecture

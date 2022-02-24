@@ -1,10 +1,18 @@
 {
-  "search.exclude": {
-    "**/.yarn": true,
-    "**/.pnp.*": true
-  },
-  "eslint.nodePath": ".yarn/sdks",
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "npm.packageManager": "yarn",
+  "eslint.format.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.workingDirectories": [
+		"./packages/shared",
+		"./packages/core",
+		"./packages/app",
+	],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

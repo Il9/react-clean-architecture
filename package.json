@@ -1,14 +1,15 @@
 {
-  "name": "base-template",
-  "description": "Base template",
+  "name": "react-clean-architecture",
+  "description": "Simple react todo app with clean architecture",
   "packageManager": "yarn@3.1.1",
   "private": true,
   "workspaces": [
+    "packages/shared",
     "packages/core",
     "packages/app"
   ],
   "scripts": {
-    "build:dev": "ts-patch install -s && yarn workspaces foreach -t --from '{@ws/core,@ws/app}' run build",
+    "build:dev": "ts-patch install -s && yarn workspaces foreach -t --from '{@ws/shared,@ws/core,@ws/app}' run build",
     "start:dev": "yarn workspace @ws/app run dev",
     "build:app": "yarn build:dev && yarn workspace @ws/app run build",
     "start:app": "yarn workspace @ws/app run start",
@@ -16,7 +17,6 @@
   },
   "devDependencies": {
     "@il9/eslint-config-base": "^1.0.12",
-    "@rushstack/eslint-patch": "^1.1.0",
     "@types/node": "^16.0.0",
     "eslint": "^7.0.0",
     "prettier": "^2.0.0",

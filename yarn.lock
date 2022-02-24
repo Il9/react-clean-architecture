@@ -112,13 +112,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/eslint-patch@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@rushstack/eslint-patch@npm:1.1.0"
-  checksum: 4602c23454c8bb03502da12398cb5c4c0bfb3b1772535b418ec94ab8c47824f70e6ff32206a35fe7086042d9516959edea439e2371147b1de7eee50ef03ace65
-  languageName: node
-  linkType: hard
-
 "@types/json-schema@npm:^7.0.7":
   version: 7.0.9
   resolution: "@types/json-schema@npm:7.0.9"
@@ -257,6 +250,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ws/shared@workspace:packages/shared":
+  version: 0.0.0-use.local
+  resolution: "@ws/shared@workspace:packages/shared"
+  languageName: unknown
+  linkType: soft
+
 "acorn-jsx@npm:^5.3.1":
   version: 5.3.2
   resolution: "acorn-jsx@npm:5.3.2"
@@ -390,7 +389,6 @@ __metadata:
   resolution: "base-template@workspace:."
   dependencies:
     "@il9/eslint-config-base": ^1.0.12
-    "@rushstack/eslint-patch": ^1.1.0
     "@types/node": ^16.0.0
     eslint: ^7.0.0
     prettier: ^2.0.0

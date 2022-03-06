@@ -1,47 +1,50 @@
-import uuid from 'uuid';
+import { TaskEntity, ITaskData } from '@domain/entities';
+import { TodoDTO } from '@domain/dtos';
 
 interface ITodoData {
-  id?: string;
-  title: string;
-  description?: string;
-  completed?: boolean;
+  tasks?: ITaskData[];
 }
 
 class TodoEntity {
-  readonly id: string;
-  readonly title: string;
-  readonly description: string;
-  readonly completed: boolean;
+  readonly tasks: TaskEntity[];
 
   constructor(data: ITodoData) {
-    this.id = data.id ?? uuid.v4();
-    this.title = data.title;
-    this.description = data.description ?? '';
-    this.completed = data.completed ?? false;
+    this.tasks = (data.tasks ?? []).map(TaskEntity.of);
   }
 
   static of(data: ITodoData) {
     return new TodoEntity(data);
   }
 
-  complete() {
+  static fromDTO(todoDTO: TodoDTO) {
     return new TodoEntity({
-      ...this,
-      completed: true,
+      ...todoDTO,
+      tasks: todoDTO.tasks.map(TaskEntity.fromDTO),
     });
   }
 
-  uncomplete() {
+  toDTO() {
+    return new TodoDTO({ ...this });
+  }
+
+  addTask(taskEntity: TaskEntity) {
     return new TodoEntity({
       ...this,
-      completed: false,
+      tasks: [...this.tasks, taskEntity],
     });
   }
 
-  update(data: Partial<Pick<ITodoData, 'title' | 'description'>>) {
+  editTask(taskEntity: TaskEntity) {
     return new TodoEntity({
       ...this,
-      ...data,
+      tasks: this.tasks.map(_task => (_task.id !== taskEntity.id ? _task : taskEntity)),
+    });
+  }
+
+  removeTask(taskEntity: TaskEntity) {
+    return new TodoEntity({
+      ...this,
+      tasks: this.tasks.filter(({ id }) => id !== taskEntity.id),
     });
   }
 }

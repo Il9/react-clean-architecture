@@ -6,7 +6,7 @@ interface ITaskRepository {
   create(taskDTO: TaskDTO): Observable<TaskDTO>;
   findAll(): Observable<TaskDTO[]>;
   update(taskDTO: TaskDTO): Observable<TaskDTO>;
-  delete(taskDTO: TaskDTO): Observable<void>;
+  delete(taskDTO: TaskDTO): Observable<TaskDTO>;
 }
 
 export default ITaskRepository;

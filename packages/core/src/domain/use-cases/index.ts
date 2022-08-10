@@ -1,1 +1,1 @@
-export { default as TodoUseCase } from '@src/domain/use-cases/TodoUseCase';
+export { default as TodoUseCase } from '@domain/use-cases/TodoUseCase';

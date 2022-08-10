@@ -1,5 +1,5 @@
-export { default as TaskEntity } from '@domain/entities/TaskEntity';
-export * from '@domain/entities/TaskEntity';
+export { default as Task } from '@src/domain/entities/Task';
+export * from '@src/domain/entities/Task';
 
-export { default as TodoEntity } from '@domain/entities/TodoEntity';
-export * from '@domain/entities/TodoEntity';
+export { default as Todo } from '@src/domain/entities/Todo';
+export * from '@src/domain/entities/Todo';

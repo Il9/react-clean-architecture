@@ -1,8 +1,13 @@
 import { v4 } from 'uuid';
 
-import { ITaskData } from '@domain/entities';
+interface ITaskData {
+  id?: string;
+  title: string;
+  description?: string;
+  completed?: boolean;
+}
 
-class TaskDTO {
+class Task {
   readonly id: string;
   readonly title: string;
   readonly description: string;
@@ -16,8 +21,9 @@ class TaskDTO {
   }
 
   static of(data: ITaskData) {
-    return new TaskDTO(data);
+    return new Task(data);
   }
 }
 
-export default TaskDTO;
+export default Task;
+export type { ITaskData };

@@ -17,7 +17,7 @@ interface IFindAllTaskRequest {
 }
 
 interface IFindAllTaskResponse {
-  tasks: Task[];
+  tasks: Array<Task>;
 }
 
 interface IUpdateTaskRequest {

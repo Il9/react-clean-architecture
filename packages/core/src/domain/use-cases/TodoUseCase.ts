@@ -26,6 +26,10 @@ class TodoUseCase {
     return this.taskRepository.create({ todoId: id, ...taskData }).pipe(pluck('task'));
   }
 
+  getAllTasks(id: string) {
+    return this.taskRepository.findAll({ todoId: id }).pipe(pluck('tasks'));
+  }
+
   editTask(taskId: string, taskData: Partial<Pick<ITaskData, 'title' | 'description'>>) {
     return this.taskRepository.update({ id: taskId, ...taskData }).pipe(pluck('task'));
   }

@@ -2,49 +2,49 @@ import { Observable } from 'rxjs';
 
 import { Todo } from '@domain/entities';
 
-interface TodoCreateRequest {
+interface ICreateTodoRequest {
   name: string;
 }
 
-interface TodoCreateResponse {
+interface ICreateTodoResponse {
   todo: Todo;
 }
 
-interface TodoFindAllResponse {
+interface IFindAllTodoResponse {
   todos: Array<Todo>;
 }
 
-interface TodoUpdateRequest {
+interface IUpdateTodoRequest {
   id: string;
   name: string;
 }
 
-interface TodoUpdateResponse {
+interface IUpdateTodoResponse {
   todo: Todo;
 }
 
-interface TodoDeleteRequest {
+interface IDeleteTodoRequest {
   id: string;
 }
 
-interface TodoDeleteResponse {
+interface IDeleteTodoResponse {
   error?: Error;
 }
 
 interface TodoRepository {
-  create(request: TodoCreateRequest): Observable<TodoCreateResponse>;
-  findAll(): Observable<TodoFindAllResponse>;
-  update(request: TodoUpdateRequest): Observable<TodoUpdateResponse>;
-  delete(request: TodoDeleteRequest): Observable<TodoDeleteResponse>;
+  create(request: ICreateTodoRequest): Observable<ICreateTodoResponse>;
+  findAll(): Observable<IFindAllTodoResponse>;
+  update(request: IUpdateTodoRequest): Observable<IUpdateTodoResponse>;
+  delete(request: IDeleteTodoRequest): Observable<IDeleteTodoResponse>;
 }
 
 export default TodoRepository;
 export type {
-  TodoCreateRequest,
-  TodoCreateResponse,
-  TodoFindAllResponse,
-  TodoUpdateRequest,
-  TodoUpdateResponse,
-  TodoDeleteRequest,
-  TodoDeleteResponse,
+  ICreateTodoRequest,
+  ICreateTodoResponse,
+  IFindAllTodoResponse,
+  IUpdateTodoRequest,
+  IUpdateTodoResponse,
+  IDeleteTodoRequest,
+  IDeleteTodoResponse,
 };

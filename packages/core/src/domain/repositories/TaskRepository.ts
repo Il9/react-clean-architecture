@@ -2,58 +2,58 @@ import { Observable } from 'rxjs';
 
 import { Task } from '@domain/entities';
 
-interface TaskCreateRequest {
+interface ICreateTaskRequest {
   todoId: string;
   title: string;
   description?: string;
 }
 
-interface TaskCreateResponse {
+interface ICreateTaskResponse {
   task: Task;
 }
 
-interface TaskFindAllRequest {
+interface IFindAllTaskRequest {
   todoId: string;
 }
 
-interface TaskFindAllResponse {
+interface IFindAllTaskResponse {
   tasks: Task[];
 }
 
-interface TaskUpdateRequest {
+interface IUpdateTaskRequest {
   id: string;
   title?: string;
   description?: string;
   completed?: boolean;
 }
 
-interface TaskUpdateResponse {
+interface IUpdateTaskResponse {
   task: Task;
 }
 
-interface TaskDeleteRequest {
+interface IDeleteTaskRequest {
   id: string;
 }
 
-interface TaskDeleteResponse {
+interface IDeleteTaskResponse {
   error?: Error;
 }
 
 interface TaskRepository {
-  create(request: TaskCreateRequest): Observable<TaskCreateResponse>;
-  findAll(request: TaskFindAllRequest): Observable<TaskFindAllResponse>;
-  update(request: TaskUpdateRequest): Observable<TaskUpdateResponse>;
-  delete(request: TaskDeleteRequest): Observable<TaskDeleteResponse>;
+  create(request: ICreateTaskRequest): Observable<ICreateTaskResponse>;
+  findAll(request: IFindAllTaskRequest): Observable<IFindAllTaskResponse>;
+  update(request: IUpdateTaskRequest): Observable<IUpdateTaskResponse>;
+  delete(request: IDeleteTaskRequest): Observable<IDeleteTaskResponse>;
 }
 
 export default TaskRepository;
 export type {
-  TaskCreateRequest,
-  TaskCreateResponse,
-  TaskFindAllRequest,
-  TaskFindAllResponse,
-  TaskUpdateRequest,
-  TaskUpdateResponse,
-  TaskDeleteRequest,
-  TaskDeleteResponse,
+  ICreateTaskRequest,
+  ICreateTaskResponse,
+  IFindAllTaskRequest,
+  IFindAllTaskResponse,
+  IUpdateTaskRequest,
+  IUpdateTaskResponse,
+  IDeleteTaskRequest,
+  IDeleteTaskResponse,
 };

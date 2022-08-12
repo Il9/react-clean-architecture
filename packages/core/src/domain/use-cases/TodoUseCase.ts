@@ -1,13 +1,13 @@
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
-import { ITaskData, ITodoData, Task, Todo } from '@domain/entities';
+import { Task, Todo } from '@domain/entities';
 import { TaskRepository, TodoRepository } from '@domain/repositories';
 
 class TodoUseCase {
   constructor(private readonly todoRepository: TodoRepository, private readonly taskRepository: TaskRepository) {}
 
-  add(data: Pick<ITodoData, 'name'>): Observable<Todo> {
+  add(data: Pick<Todo, 'name'>): Observable<Todo> {
     return this.todoRepository.create(data).pipe(pluck('todo'));
   }
 
@@ -15,7 +15,7 @@ class TodoUseCase {
     return this.todoRepository.findAll().pipe(pluck('todos'));
   }
 
-  edit(id: string, data: Pick<ITodoData, 'name'>): Observable<Todo> {
+  edit(id: string, data: Pick<Todo, 'name'>): Observable<Todo> {
     return this.todoRepository.update({ id, ...data }).pipe(pluck('todo'));
   }
 
@@ -23,7 +23,7 @@ class TodoUseCase {
     return this.todoRepository.delete({ id }).pipe(pluck('error'));
   }
 
-  addTask(id: string, taskData: Pick<ITaskData, 'title' | 'description'>): Observable<Task> {
+  addTask(id: string, taskData: Pick<Task, 'title' | 'description'>): Observable<Task> {
     return this.taskRepository.create({ todoId: id, ...taskData }).pipe(pluck('task'));
   }
 
@@ -31,7 +31,7 @@ class TodoUseCase {
     return this.taskRepository.findAll({ todoId: id }).pipe(pluck('tasks'));
   }
 
-  editTask(taskId: string, taskData: Partial<Pick<ITaskData, 'title' | 'description'>>): Observable<Task> {
+  editTask(taskId: string, taskData: Partial<Pick<Task, 'title' | 'description'>>): Observable<Task> {
     return this.taskRepository.update({ id: taskId, ...taskData }).pipe(pluck('task'));
   }
 
@@ -49,4 +49,3 @@ class TodoUseCase {
 }
 
 export default TodoUseCase;
-export type { ITaskData };

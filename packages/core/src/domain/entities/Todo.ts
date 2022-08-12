@@ -1,23 +1,15 @@
-import { v4 } from 'uuid';
-
-interface ITodoData {
-  id?: string;
-  name: string;
-}
-
 class Todo {
   readonly id: string;
   readonly name: string;
 
-  constructor(data: ITodoData) {
-    this.id = data.id ?? v4();
+  constructor(data: Todo) {
+    this.id = data.id;
     this.name = data.name;
   }
 
-  static of(data: ITodoData) {
+  static of(data: Todo) {
     return new Todo(data);
   }
 }
 
 export default Todo;
-export type { ITodoData };

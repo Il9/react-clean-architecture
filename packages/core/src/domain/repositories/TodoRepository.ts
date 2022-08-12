@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { Todo } from '@domain/entities';
+import { Todo } from '@domain';
 
 interface ICreateTodoRequest {
   name: string;

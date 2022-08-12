@@ -1,8 +1,7 @@
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
-import { Task, Todo } from '@domain/entities';
-import { TaskRepository, TodoRepository } from '@domain/repositories';
+import { Task, Todo, TaskRepository, TodoRepository } from '@domain';
 
 class TodoUseCase {
   constructor(private readonly todoRepository: TodoRepository, private readonly taskRepository: TaskRepository) {}

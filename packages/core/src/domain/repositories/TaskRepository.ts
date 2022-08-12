@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { Task } from '@domain/entities';
+import { Task } from '@domain';
 
 interface ICreateTaskRequest {
   todoId: string;

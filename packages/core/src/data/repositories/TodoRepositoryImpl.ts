@@ -1,4 +1,4 @@
-import { concat, filter, from, map, mergeMap, Observable, of, pluck, tap, toArray } from 'rxjs';
+import { concat, filter, from, map, mergeMap, Observable, of, tap, toArray } from 'rxjs';
 import { v4 } from 'uuid';
 
 import {
@@ -21,24 +21,23 @@ class TodoRepositoryImpl implements TodoRepository {
 
   constructor(private readonly webStorage: WebStorage) {}
 
-  private toStreamFromArray(todos: Array<Todo>): Observable<Todo> {
-    return from(todos);
+  private toStreamFromArray(todo$: Observable<Array<Todo>>): Observable<Todo> {
+    return todo$.pipe(mergeMap(from));
   }
 
   private findAllFromStorage(): Observable<Todo> {
     const getTodosFromStorage = (TODOS_KEY: TodosKey) =>
       JSON.parse(this.webStorage.get(TODOS_KEY) ?? '[]') as Array<Todo>;
 
-    return of(this.TODOS_KEY).pipe(map(getTodosFromStorage), mergeMap(this.toStreamFromArray));
+    return of(this.TODOS_KEY).pipe(map(getTodosFromStorage), this.toStreamFromArray);
   }
 
   private updateToStorage(todo$: Observable<Todo>): Observable<Todo> {
-    todo$.pipe(
+    return todo$.pipe(
       toArray(),
-      tap(todos => this.webStorage.set(this.TODOS_KEY, JSON.stringify(todos)))
+      tap(todos => this.webStorage.set(this.TODOS_KEY, JSON.stringify(todos))),
+      this.toStreamFromArray
     );
-
-    return todo$;
   }
 
   create(request: ICreateTodoRequest): Observable<ICreateTodoResponse> {

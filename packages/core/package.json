@@ -6,6 +6,7 @@
     "build": "rm -rf lib && tsc"
   },
   "dependencies": {
+    "mobx": "^6.6.1",
     "rxjs": "^7.5.4",
     "uuid": "^8.3.2"
   },

@@ -245,6 +245,7 @@ __metadata:
   resolution: "@ws/core@workspace:packages/core"
   dependencies:
     "@types/uuid": ^8.3.4
+    mobx: ^6.6.1
     rxjs: ^7.5.4
     uuid: ^8.3.2
   languageName: unknown
@@ -1456,6 +1457,13 @@ __metadata:
   version: 1.2.5
   resolution: "minimist@npm:1.2.5"
   checksum: 86706ce5b36c16bfc35c5fe3dbb01d5acdc9a22f2b6cc810b6680656a1d2c0e44a0159c9a3ba51fb072bb5c203e49e10b51dcd0eec39c481f4c42086719bae52
+  languageName: node
+  linkType: hard
+
+"mobx@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "mobx@npm:6.6.1"
+  checksum: 20e876693d1a99916d347ba666f47e7931d5aa5a1172eae48d172477d537577d604207a8f8918041f9b6c74280b6533a516cf1639929735c6bb514f34776225a
   languageName: node
   linkType: hard
 

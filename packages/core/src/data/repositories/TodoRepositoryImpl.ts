@@ -3,6 +3,7 @@ import { v4 } from 'uuid';
 
 import {
   Todo,
+  TodoRepository,
   ICreateTodoRequest,
   ICreateTodoResponse,
   IDeleteTodoRequest,
@@ -10,7 +11,6 @@ import {
   IFindAllTodoResponse,
   IUpdateTodoRequest,
   IUpdateTodoResponse,
-  TodoRepository,
 } from '@domain';
 import { WebStorage } from '@data';
 

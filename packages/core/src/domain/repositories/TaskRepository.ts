@@ -21,6 +21,7 @@ interface IFindAllTaskResponse {
 }
 
 interface IUpdateTaskRequest {
+  todoId: string;
   id: string;
   title?: string;
   description?: string;
@@ -32,6 +33,7 @@ interface IUpdateTaskResponse {
 }
 
 interface IDeleteTaskRequest {
+  todoId: string;
   id: string;
 }
 

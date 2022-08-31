@@ -30,20 +30,20 @@ class TodoUseCase {
     return this.taskRepository.findAll({ todoId: id }).pipe(pluck('tasks'));
   }
 
-  editTask(taskId: string, taskData: Partial<Pick<Task, 'title' | 'description'>>): Observable<Task> {
-    return this.taskRepository.update({ id: taskId, ...taskData }).pipe(pluck('task'));
+  editTask(id: string, taskId: string, taskData: Partial<Pick<Task, 'title' | 'description'>>): Observable<Task> {
+    return this.taskRepository.update({ todoId: id, id: taskId, ...taskData }).pipe(pluck('task'));
   }
 
-  completeTask(taskId: string): Observable<Task> {
-    return this.taskRepository.update({ id: taskId, completed: true }).pipe(pluck('task'));
+  completeTask(id: string, taskId: string): Observable<Task> {
+    return this.taskRepository.update({ todoId: id, id: taskId, completed: true }).pipe(pluck('task'));
   }
 
-  incompleteTask(taskId: string): Observable<Task> {
-    return this.taskRepository.update({ id: taskId, completed: false }).pipe(pluck('task'));
+  incompleteTask(id: string, taskId: string): Observable<Task> {
+    return this.taskRepository.update({ todoId: id, id: taskId, completed: false }).pipe(pluck('task'));
   }
 
-  removeTask(taskId: string): Observable<Error | undefined> {
-    return this.taskRepository.delete({ id: taskId }).pipe(pluck('error'));
+  removeTask(id: string, taskId: string): Observable<Error | undefined> {
+    return this.taskRepository.delete({ todoId: id, id: taskId }).pipe(pluck('error'));
   }
 }
 
